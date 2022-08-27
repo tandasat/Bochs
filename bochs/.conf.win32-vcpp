@@ -20,8 +20,11 @@ set echo
             --enable-busmouse \
             --enable-es1370 \
             --enable-e1000 \
-            --enable-show-ips \
+            --disable-show-ips \
             --enable-avx \
+            --enable-smp \
+            --enable-svm \
+            --enable-debugger \
             --disable-readline \
             --without-x \
             --with-win32 --with-rfb --with-nogui

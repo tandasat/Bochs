@@ -70,8 +70,12 @@ case $which_config in
                 --enable-es1370 \
                 --enable-e1000 \
                 --enable-plugins \
-                --enable-show-ips \
-                --with-all-libs \
+                --disable-show-ips \
+                --enable-smp \
+                --enable-avx \
+                --enable-svm \
+                --enable-debugger \
+                --with-nogui \
                 ${CONFIGURE_ARGS}
     ;;
 

@@ -796,7 +796,7 @@ void BX_CPU_C::SvmInterceptException(unsigned type, unsigned vector, Bit16u errc
     return;
   }
 
-  BX_ERROR(("SVM VMEXIT: event vector 0x%02x type %d error code=0x%04x", vector, type, errcode));
+  BX_DEBUG(("SVM VMEXIT: event vector 0x%02x type %d error code=0x%04x", vector, type, errcode));
 
   // VMEXIT is not considered to occur during event delivery if it results
   // in a double fault exception that causes VMEXIT directly
