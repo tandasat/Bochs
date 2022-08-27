@@ -22,6 +22,8 @@ set echo
             --enable-e1000 \
             --enable-show-ips \
             --enable-avx \
+            --enable-smp \
+            --enable-svm \
             --disable-readline \
             --without-x \
             --with-win32 --with-rfb --with-nogui

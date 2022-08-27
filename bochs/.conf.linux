@@ -71,7 +71,10 @@ case $which_config in
                 --enable-e1000 \
                 --enable-plugins \
                 --enable-show-ips \
-                --with-all-libs \
+                --enable-smp \
+                --enable-avx \
+                --enable-svm \
+                --with-nogui \
                 ${CONFIGURE_ARGS}
     ;;
 

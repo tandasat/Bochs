@@ -8,7 +8,7 @@
 # those paths to the environment variables.
 
 set echo
-CFLAGS="-pipe -O3 -I/sw/include -fomit-frame-pointer -finline-functions -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-labels=16 -falign-loops-max-skip=15 -falign-jumps-max-skip=15 -fprefetch-loop-arrays $CFLAGS"
+CFLAGS="-pipe -O3 -I/sw/include -fomit-frame-pointer -finline-functions -falign-functions=16 $CFLAGS"
 CPATH="/sw/include"
 CPPFLAGS=""
 CXXFLAGS="$CFLAGS"
@@ -20,8 +20,10 @@ export CPPFLAGS
 export CXXFLAGS
 export LDFLAGS
 
-./configure --enable-sb16 \
-	    --enable-ne2000 \
+./configure --with-nogui \
+            --enable-smp \
+            --enable-avx \
+            --enable-svm \
 	    --enable-all-optimizations \
             --enable-cpu-level=6 \
             --enable-x86-64 \
@@ -35,7 +37,6 @@ export LDFLAGS
             --enable-usb-ehci \
             --enable-usb-xhci \
             --enable-busmouse \
-            --enable-es1370 \
             --enable-e1000 \
 	    --enable-plugins \
 	    ${CONFIGURE_ARGS}
