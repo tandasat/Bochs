@@ -9,6 +9,7 @@ obj-debug/
 obj-release/
 .vscode
 bochs-msvc-src.zip
+.DS_Store
 
 # /bochs/
 /bochs/Makefile

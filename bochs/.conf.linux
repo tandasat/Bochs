@@ -78,8 +78,11 @@ case $which_config in
                 --enable-es1370 \
                 --enable-e1000 \
                 --enable-plugins \
-                --enable-show-ips \
-                --with-all-libs \
+                --disable-show-ips \
+                --enable-smp \
+                --enable-avx \
+                --enable-svm \
+                --with-nogui \
                 ${CONFIGURE_ARGS}
     ;;
   *) echo "Unknown config \"$1\" selected!" ;;
