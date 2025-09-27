@@ -135,8 +135,6 @@ static bx_cpuid_t *cpuid_factory(BX_CPU_C *cpu)
 #undef bx_define_cpudb
 }
 
-#include <string>
-
 void BX_CPU_C::add_remove_cpuid_features(const char *input, bool add)
 {
   // Use as delimiters: space, tab, newline, and comma
@@ -150,8 +148,13 @@ void BX_CPU_C::add_remove_cpuid_features(const char *input, bool add)
     if (strchr(delimiters, input[i]) || !input[i]) {
       // If there is a word between start and i
       if (i > start) {
-        std::string feature_name(input + start, input + i);
-        int feature = match_cpu_feature(feature_name.c_str());
+        size_t len = i - start;
+        char *feature_name = (char *)malloc(len + 1);
+        if (!feature_name)
+          BX_PANIC(("Out of memory!"));
+        memcpy(feature_name, input + start, len);
+        feature_name[len] = '\0';
+        int feature = match_cpu_feature(feature_name);
         if (feature >= 0) {
           if (add)
             BX_CPU_THIS_PTR cpuid->enable_cpu_extension(feature);
@@ -159,7 +162,8 @@ void BX_CPU_C::add_remove_cpuid_features(const char *input, bool add)
             BX_CPU_THIS_PTR cpuid->disable_cpu_extension(feature);
         }
         else
-          BX_PANIC(("CPUID: unknown feature name \"%s\" cannot be enabled/disabled", feature_name.c_str()));
+          BX_PANIC(("CPUID: unknown feature name \"%s\" cannot be enabled/disabled", feature_name));
+        free(feature_name);
       }
       // Move the start to the next character after the delimiter
       start = i + 1;
