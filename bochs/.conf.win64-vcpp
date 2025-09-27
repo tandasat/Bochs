@@ -25,8 +25,7 @@ set echo
             --enable-es1370 \
             --enable-e1000 \
             --enable-show-ips \
-            --enable-debugger \
-            --enable-debugger-gui \
+            --enable-smp \
             --disable-readline \
             --without-x \
             --with-win32 --with-rfb --with-nogui
