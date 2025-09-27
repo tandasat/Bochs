@@ -82,7 +82,7 @@ case $which_config in
                 --enable-es1370 \
                 --enable-e1000 \
                 --enable-plugins \
-                --enable-show-ips \
+                --disable-show-ips \
                 --enable-smp \
                 --with-nogui \
                 ${CONFIGURE_ARGS}
