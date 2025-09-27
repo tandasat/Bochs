@@ -22,6 +22,7 @@ export LDFLAGS
 
 ./configure --with-nogui \
             --enable-smp \
+            --disable-show-ips \
             --enable-all-optimizations \
             --enable-cpu-level=6 \
             --enable-3dnow \
