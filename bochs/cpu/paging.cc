@@ -570,7 +570,7 @@ const Bit32u BX_COMBINED_ACCESS_GLOBAL_PAGE = 0x100;
 #define IS_WRITEABLE_PAGE(combined_access) (((combined_access) & BX_COMBINED_ACCESS_WRITE))
 #define IS_NX_PAGE(combined_access) ((combined_access) & 0x1)
 
-BX_CPP_INLINE Bit32u combine_memtype(Bit32u combined_access, BxMemtype memtype) 
+BX_CPP_INLINE Bit32u combine_memtype(Bit32u combined_access, BxMemtype memtype)
 {
   return combined_access |= unsigned(memtype) << 9;
 }
@@ -1688,7 +1688,7 @@ bx_phy_address BX_CPU_C::nested_walk_long_mode(bx_phy_address guest_paddr, unsig
 
   bool isWrite = (rw & 1); // write or r-m-w
 
-  unsigned priv_index = (1<<3) /* user */ | 
+  unsigned priv_index = (1<<3) /* user */ |
         (combined_access & (BX_COMBINED_ACCESS_WRITE | BX_COMBINED_ACCESS_USER)) |
         (unsigned) isWrite;
 
@@ -1919,7 +1919,7 @@ BX_CPP_INLINE bool ept_verify_guest_paging_bit(Bit64u leaf_entry) { return leaf_
 #define PAGING_EPT_RESERVED_BITS (BX_PAGING_PHY_ADDRESS_RESERVED_BITS)
 
 // entries which were allowed to write only because of SPP cannot be cached in DTLB as writeable
-bx_phy_address BX_CPU_C::translate_guest_physical(bx_phy_address guest_paddr, bx_address guest_laddr, bool guest_laddr_valid, 
+bx_phy_address BX_CPU_C::translate_guest_physical(bx_phy_address guest_paddr, bx_address guest_laddr, bool guest_laddr_valid,
                     bool is_page_walk, bool user_page, bool writeable_page, bool nx_page, unsigned rw, bool supervisor_shadow_stack, bool *spp_page)
 {
   VMCS_CACHE *vm = &BX_CPU_THIS_PTR vmcs;
@@ -2062,7 +2062,7 @@ bx_phy_address BX_CPU_C::translate_guest_physical(bx_phy_address guest_paddr, bx
   }
 
   if (vmexit_reason) {
-    BX_ERROR(("VMEXIT: EPT %s for guest paddr 0x" FMT_PHY_ADDRX " laddr 0x" FMT_ADDRX,
+    BX_DEBUG(("VMEXIT: EPT %s for guest paddr 0x" FMT_PHY_ADDRX " laddr 0x" FMT_ADDRX,
        (vmexit_reason == VMX_VMEXIT_EPT_VIOLATION) ? "violation" : "misconfig", guest_paddr, guest_laddr));
 
     Bit32u vmexit_qualification = 0;

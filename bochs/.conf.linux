@@ -83,6 +83,7 @@ case $which_config in
                 --enable-e1000 \
                 --enable-plugins \
                 --disable-show-ips \
+                --enable-debugger \
                 --enable-smp \
                 --with-nogui \
                 ${CONFIGURE_ARGS}
